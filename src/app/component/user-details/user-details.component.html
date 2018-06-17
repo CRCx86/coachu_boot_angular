@@ -1,0 +1,68 @@
+<div *ngIf="user">
+  <h2> {{user.username | uppercase}} Details</h2>
+  <div>
+    <label>id:
+      <input matInput placeholder="user id" [(ngModel)] = "user.id" placeholder="id">
+    </label>
+
+    <label>name:
+      <input matInput placeholder="user name" [(ngModel)]="user.username" placeholder="name">
+    </label>
+
+    <label>password:
+      <input matInput placeholder="user password" [(ngModel)] = "user.password" placeholder="password">
+    </label>
+
+    <label>firstname:
+      <input matInput placeholder="user firstname" [(ngModel)]="user.firstname" placeholder="firstname">
+    </label>
+
+    <label>lastname:
+      <input matInput placeholder="user lastname" [(ngModel)]="user.lastname" placeholder="lastname">
+    </label>
+
+    <label>enabled:
+      <input matInput placeholder="user enabled" [(ngModel)]="user.enabled" placeholder="enabled">
+    </label>
+
+    <label>email:
+      <input matInput placeholder="user email" [(ngModel)]="user.email" placeholder="email">
+    </label>
+  </div>
+</div>
+
+<div *ngIf="user1">
+  <h2> {{user.username | uppercase}} Details</h2>
+  <div>
+    <label>id:
+      <input matInput placeholder="user id" [(ngModel)] = "user1.id" placeholder="id">
+    </label>
+
+    <label>name:
+      <input matInput placeholder="user name" [(ngModel)]="user1.username" placeholder="name">
+    </label>
+
+    <label>password:
+      <input matInput placeholder="user password" [(ngModel)] = "user1.password" placeholder="password">
+    </label>
+
+    <label>firstname:
+      <input matInput placeholder="user firstname" [(ngModel)]="user1.firstname" placeholder="firstname">
+    </label>
+
+    <label>lastname:
+      <input matInput placeholder="user lastname" [(ngModel)]="user1.lastname" placeholder="lastname">
+    </label>
+
+    <label>enabled:
+      <input matInput placeholder="user enabled" [(ngModel)]="user1.enabled" placeholder="enabled">
+    </label>
+
+    <label>email:
+      <input matInput placeholder="user email" [(ngModel)]="user1.email" placeholder="email">
+    </label>
+  </div>
+</div>
+<button mat-raised-button color="primary" (click)="goBack()">
+  <span>go back</span>
+</button>

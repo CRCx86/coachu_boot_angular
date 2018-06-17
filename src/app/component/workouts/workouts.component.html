@@ -1,0 +1,18 @@
+<h2>All workouts</h2>
+<ul class="workouts">
+  <li *ngFor="let workout of workouts">
+    <a routerLink="/workout-details/{{workout.id}}">
+      <span class="badge">{{workout.id}}</span> {{workout.workoutname}}
+    </a>
+    <!--<button class="delete" title="delete hero"-->
+    <!--(click)="delete(hero)">X</button>-->
+  </li>
+</ul>
+<div>
+  <label>Workout name:
+    <input #workoutName />
+  </label>
+  <button (click)="add(workoutName.value); workoutName.value=''">
+    add
+  </button>
+</div>
