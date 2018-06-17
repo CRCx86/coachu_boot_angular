@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "client"
+    "name": "Coachu"
   },
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "../coachu/src/main/resources/static",
       "assets": [
         "assets",
         "favicon.ico"
