@@ -1,0 +1,27 @@
+.workout-detail {
+  max-width: 600px;
+}
+
+button {
+  margin: 16px 8px;
+}
+
+.button-row {
+  text-align: left;
+}
+
+.button-row button {
+  margin-right: 8px;
+}
+
+.button-row form {
+  margin-right: 8px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+a {
+  color: #0089cd;
+}

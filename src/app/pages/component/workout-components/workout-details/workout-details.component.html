@@ -1,0 +1,105 @@
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px" *ngIf="workout.id">
+  <div fxFlex>
+    <mat-card>
+      <form [formGroup]="workoutForm" (ngSubmit)="save()">
+        <mat-card-header>
+          <mat-card-title>
+            <h2>Edit Workout's details</h2>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="mb-20">
+            <mat-form-field>
+              <input matInput placeholder="Workout name" [(ngModel)]="workout.workoutname"
+                     formControlName="workoutname" required/>
+            </mat-form-field>
+          </div>
+          <div class="mb-20">
+            <mat-form-field>
+              <input matInput placeholder="Workout dateTime" [(ngModel)]="workout.dateTimedescription"
+                     formControlName="dateTimedescription" required/>
+            </mat-form-field>
+          </div>
+          <div class="mb-20">
+            <mat-form-field>
+              <input matInput placeholder="Workout types" [(ngModel)]="workout.workoutTypes"
+                     formControlName="workoutTypes" required/>
+            </mat-form-field>
+          </div>
+          <a (click)="addExercise()">Add new exercise</a>
+          <mat-divider></mat-divider>
+          <!--https://github.com/AngularFirebase/107-reactive-forms-basics-guide/blob/master/src/app/array-form/array-form.component.html-->
+          <div formArrayName="exercises">
+            <div *ngFor="let exerciseText of exerciseForm.controls; let i = index" [formGroupName]="i">
+              <mat-form-field>
+                <input matInput placeholder="Workout exercise" [(ngModel)]="workout.exercises[i].exerciseName"
+                       formControlName="exerise" required/>
+              </mat-form-field>
+              <button [disabled]="exerciseForm.controls.length == 1"
+                      mat-raised-button color="primary" type="button" (click)="removeExercise(i)">Remove
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+        <button mat-raised-button color="primary" type="submit"
+                [disabled]="!workoutForm.valid">Save
+        </button>
+        <button mat-raised-button color="secondary" (click)="remove(workout.id)"
+                *ngIf="workout.id" type="button">Delete
+        </button>
+        <a mat-button routerLink="/workouts">Go Back </a>
+      </form>
+    </mat-card>
+  </div>
+</div>
+
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px" *ngIf="!workout.id">
+  <div fxFlex>
+    <mat-card>
+      <form [formGroup]="workoutForm" (ngSubmit)="save()">
+        <mat-card-header>
+          <mat-card-title>
+            <h2>Add Workout</h2>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="mb-20">
+            <mat-form-field>
+              <input matInput placeholder="Workout name" formControlName="workoutname" required/>
+            </mat-form-field>
+          </div>
+          <div class="mb-20">
+            <mat-form-field>
+              <input matInput placeholder="Workout dateTime"
+                     formControlName="dateTimedescription" required/>
+            </mat-form-field>
+          </div>
+          <div class="mb-20">
+            <mat-form-field>
+              <input matInput placeholder="Workout types" formControlName="workoutTypes" required/>
+            </mat-form-field>
+          </div>
+          <a (click)="addExercise()">Add new exercise</a>
+          <mat-divider></mat-divider>
+          <!--https://github.com/AngularFirebase/107-reactive-forms-basics-guide/blob/master/src/app/array-form/array-form.component.html-->
+          <div formArrayName="exercises">
+            <div *ngFor="let exerciseText of exerciseForm.controls; let i = index" [formGroupName]="i">
+              <mat-form-field>
+                <input matInput placeholder="Workout exercise" formControlName="exercise" required/>
+              </mat-form-field>
+              <button [disabled]="exerciseForm.controls.length == 1"
+                      mat-raised-button color="primary" type="button" (click)="removeExercise(i)">Remove
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!workoutForm.valid">Save
+        </button>
+        <!--<button mat-raised-button color="secondary" (click)="remove(workout.id)"-->
+                <!--*ngIf="workout.id" type="button">Delete-->
+        <!--</button>-->
+        <a mat-button routerLink="/workouts">Go Back </a>
+      </form>
+    </mat-card>
+  </div>
+</div>

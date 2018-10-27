@@ -1,0 +1,42 @@
+<div class="content" fxLayout="row" fxLayoutAlign="center" *ngIf="user">
+  <mat-card-header>
+    <mat-card-title>
+      <h2> {{user.username | uppercase}} Details</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <div>
+    <mat-card-content>
+      <label>id:
+        <input matInput placeholder="user id" [(ngModel)]="user.id" placeholder="id">
+      </label>
+
+      <label>name:
+        <input matInput placeholder="user name" [(ngModel)]="user.username" placeholder="name">
+      </label>
+
+      <label>password:
+        <input matInput placeholder="user password" [(ngModel)]="user.password" placeholder="password">
+      </label>
+
+      <label>firstname:
+        <input matInput placeholder="user firstname" [(ngModel)]="user.firstname" placeholder="firstname">
+      </label>
+
+      <label>lastname:
+        <input matInput placeholder="user lastname" [(ngModel)]="user.lastname" placeholder="lastname">
+      </label>
+
+      <label>enabled:
+        <input matInput placeholder="user enabled" [(ngModel)]="user.enabled" placeholder="enabled">
+      </label>
+
+      <label>email:
+        <input matInput placeholder="user email" [(ngModel)]="user.email" placeholder="email">
+      </label>
+    </mat-card-content>
+  </div>
+  <button mat-raised-button color="primary" (click)="goBack()">
+    <span>go back</span>
+  </button>
+</div>
+

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 import {DisplayMessage} from '../shared/models/display-message';
-import {AuthService, UserService} from '../service';
+import {AuthService, UserService} from '../shared/service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({

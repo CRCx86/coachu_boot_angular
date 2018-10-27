@@ -2,13 +2,10 @@ import { Inject } from '@angular/core';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DisplayMessage } from '../shared/models/display-message';
-import { Subscription } from 'rxjs/Subscription';
-
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import {UserService} from '../service';
-import {AuthService} from '../service';
+import { Subscription ,  Observable ,  Subject } from 'rxjs';
+import {UserService} from '../shared/service';
+import {AuthService} from '../shared/service';
+import {DisplayMessage} from '../shared/models/display-message';
 
 @Component({
   selector: 'app-signup',
@@ -48,11 +45,11 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.route.params
-      .takeUntil(this.ngUnsubscribe)
-      .subscribe((params: DisplayMessage) => {
-        this.notification = params;
-      });
+    // this.route.params
+    //   .takeUntil(this.ngUnsubscribe)
+    //   .subscribe((params: DisplayMessage) => {
+    //     this.notification = params;
+    //   });
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.form = this.formBuilder.group({
@@ -87,7 +84,7 @@ export class SignupComponent implements OnInit, OnDestroy {
           console.log(data);
           this.authService.login(this.form.value).subscribe(data =>{
             this.userService.getMyInfo().subscribe();
-          })
+          });
           this.router.navigate([this.returnUrl]);
         },
         error => {

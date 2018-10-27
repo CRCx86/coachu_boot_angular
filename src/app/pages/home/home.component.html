@@ -1,0 +1,91 @@
+<div class="content" fxLayout="row" fxLayoutAlign="center none">
+
+  <!--<app-api-card-->
+  <!--fxFlex-->
+  <!--title='"Foo"'-->
+  <!--subTitle="Public"-->
+  <!--imgUrl="assets/image/foo.png"-->
+  <!--content='This is an demo public endpoint which requires no authentication.'-->
+  <!--apiText="/api/foo"-->
+  <!--[responseObj]="fooResponse"-->
+  <!--(apiClick)="makeRequest($event)"-->
+  <!--&gt;-->
+  <!--</app-api-card>-->
+
+  <!--<tr>-->
+    <!--<button mat-menu-item [routerLink]="['/exercises']">YOUR EXERCISES</button>-->
+    <!--<button mat-menu-item [routerLink]="['/workouts']">YOUR WORKOUTS</button>-->
+  <!--</tr>-->
+  <!--<th><h2>All users</h2></th>-->
+  <!--<li *ngFor="let user of users">-->
+    <!--<tr>-->
+      <!--<mat-card class="user-detail">-->
+        <!--<mat-card-header>-->
+          <!--<div mat-card-avatar class="user-header-image"></div>-->
+            <!--<mat-card-title>{{user.firstname}}</mat-card-title>-->
+            <!--<mat-card-subtitle>{{user.lastname}}</mat-card-subtitle>-->
+        <!--</mat-card-header>-->
+        <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="User photo">-->
+        <!--<mat-card-content>-->
+          <!--<p>{{user.id}}</p>-->
+          <!--<p>{{user.username}}</p>-->
+          <!--<p>{{user.firstname}}</p>-->
+          <!--<p>{{user.lastname}}</p>-->
+          <!--<p>{{user.email}}</p>-->
+          <!--<p>{{user.enabled}}</p>-->
+          <!--<p>{{user.password}}</p>-->
+        <!--</mat-card-content>-->
+        <!--<mat-card-actions>-->
+          <!--<button mat-button routerLink="/user-details/{{user.id}}">DETAILS</button>-->
+        <!--</mat-card-actions>-->
+      <!--</mat-card>-->
+    <!--</tr>-->
+  <!--</li>-->
+
+
+  <!--<ul class="users">-->
+  <!--<li *ngFor="let user of users">-->
+  <!--<a routerLink="/user-details/{{user.id}}">-->
+  <!--<span class="badge">{{user.id}}</span> {{user.username}}-->
+  <!--</a>-->
+  <!--&lt;!&ndash;<button class="delete" title="delete hero"&ndash;&gt;-->
+  <!--&lt;!&ndash;(click)="delete(hero)">X</button>&ndash;&gt;-->
+  <!--</li>-->
+  <!--</ul>-->
+
+  <!-- user list -->
+  <!--<div>-->
+  <!--<label>User name:-->
+  <!--<input #userName />-->
+  <!--</label>-->
+  <!--<button (click)="add(userName.value); userName.value=''">-->
+  <!--add-->
+  <!--</button>-->
+  <!--</div>-->
+
+
+  <!--<app-api-card-->
+  <!--fxFlex-->
+  <!--title='"Who am I"'-->
+  <!--subTitle="Authorized role: USER"-->
+  <!--imgUrl="assets/image/user.png"-->
+  <!--content='The regular endpoint which returns the current user information. You have to sign in as either a User or an Admin to gain the access to this endpoint.'-->
+  <!--apiText="/api/whoami"-->
+  <!--[responseObj]="whoamIResponse"-->
+  <!--(apiClick)="makeRequest($event)"-->
+  <!--&gt;-->
+  <!--</app-api-card>-->
+
+  <!--<app-api-card-->
+  <!--class="last"-->
+  <!--fxFlex-->
+  <!--title='"All users"'-->
+  <!--subTitle="Authorized role: ADMIN"-->
+  <!--imgUrl="assets/image/admin.png"-->
+  <!--content='This endpoint will give you a list of all the users. You have to sign in as an Admin to gain the access to this endpoint.'-->
+  <!--apiText="/api/user/all"-->
+  <!--[responseObj]="allUserResponse"-->
+  <!--(apiClick)="makeRequest($event)"-->
+  <!--&gt;-->
+  <!--</app-api-card>-->
+</div>

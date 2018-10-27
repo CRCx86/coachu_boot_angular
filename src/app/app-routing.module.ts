@@ -1,36 +1,43 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
-import {HomeComponent} from "./home/home.component";
-import {GuestGuard} from "./guard/guest.guard";
+import {HomeComponent} from "./pages/home/home.component";
+import {GuestGuard} from "./pages/guard/guest.guard";
 import {LoginComponent} from "./login/login.component";
-import {ChangePasswordComponent} from "./change-password";
-import {LoginGuard} from "./guard/login.guard";
-import {AdminComponent} from "./admin";
-import {AdminGuard} from "./guard/admin.guard";
-import {NotFoundComponent} from "./not-found/not-found.component";
-import {ForbiddenComponent} from "./forbidden/forbidden.component";
+import {ChangePasswordComponent} from "./pages/change-password";
+import {LoginGuard} from "./pages/guard/login.guard";
+import {AdminComponent} from "./pages/admin";
+import {AdminGuard} from "./pages/guard/admin.guard";
+import {NotFoundComponent} from "./pages/not-found/not-found.component";
+import {ForbiddenComponent} from "./pages/forbidden/forbidden.component";
 import {SignupComponent} from './signup/signup.component';
-import {UserDetailsComponent} from './component/user-details/user-details.component';
-import {WorkoutDetailsComponent} from './component/workout-details/workout-details.component';
-import {WorkoutsComponent} from './component/workouts/workouts.component';
-import {ExerciseDetailsComponent} from './component/exercise-details/exercise-details.component';
-import {ExercisesComponent} from './component/exercises/exercises.component';
+import {UserDetailsComponent} from './pages/component/user-details/user-details.component';
+import {WorkoutDetailsComponent} from './pages/component/workout-components/workout-details/workout-details.component';
+import {WorkoutsComponent} from './pages/component/workout-components/workouts/workouts.component';
+import {ExerciseDetailsComponent} from './pages/component/exercise-components/exercise-details/exercise-details.component';
+import {ExercisesComponent} from './pages/component/exercise-components/exercises/exercises.component';
+import {WorkoutMovementsStyleDashboardComponent} from './pages/component/workout-components/workout-movements-style-dashboard/workout-movements-style-dashboard.component';
+import {WorkoutStyleDashboardComponent} from './pages/component/workout-components/workout-style-dashboard/workout-style-dashboard.component';
+import {SignupModule} from './signup/signup.module';
+
+// add routing to child component
+// https://github.com/angular/angular-cli/issues/3243
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    pathMatch: 'full'
+    loadChildren: './pages/pages.module#PagesModule'
+    // ,
+    // canActivate: [LoginGuard]
   },
   {
     path:'signup',
-    component: SignupComponent,
+    loadChildren: './signup/signup.module#SignupModule',
     canActivate: [GuestGuard],
     pathMatch:'full'
   },
   {
     path: 'login',
-    component: LoginComponent,
+    loadChildren: './login/login.module#LoginModule',
     canActivate: [GuestGuard]
   },
   {
@@ -38,41 +45,26 @@ export const routes: Routes = [
     component: ChangePasswordComponent,
     canActivate: [LoginGuard]
   },
-  {
-    path: 'admin',
-    component: AdminComponent,
-    canActivate: [AdminGuard]
-  },
-  {
-    path: 'user-details/:id',
-    component: UserDetailsComponent,
-    canActivate: [AdminGuard]
-  },
-  {
-    path: 'user-details',
-    component: UserDetailsComponent,
-    canActivate: [AdminGuard]
-  },
-  {
-    path: 'workout-details/:id',
-    component: WorkoutDetailsComponent,
-    canActivate: [AdminGuard]
-  },
-  {
-    path: 'workouts',
-    component: WorkoutsComponent,
-    canActivate: [AdminGuard]
-  },
-  {
-    path: 'exercise-details/:id',
-    component: ExerciseDetailsComponent,
-    canActivate: [AdminGuard]
-  },
-  {
-    path: 'exercises',
-    component: ExercisesComponent,
-    canActivate: [AdminGuard]
-  },
+  // {
+  //   path: '',
+  //   component: HomeComponent,
+  //   pathMatch: 'full'
+  // },
+  // {
+  //   path: 'admin',
+  //   component: AdminComponent,
+  //   canActivate: [AdminGuard]
+  // },
+  // {
+  //   path: 'user-details/:id',
+  //   component: UserDetailsComponent,
+  //   canActivate: [AdminGuard]
+  // },
+  // {
+  //   path: 'user-details',
+  //   component: UserDetailsComponent,
+  //   canActivate: [AdminGuard]
+  // }
   {
     path: '404',
     component: NotFoundComponent
