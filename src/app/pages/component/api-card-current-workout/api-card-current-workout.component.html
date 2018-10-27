@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title><h2>Current User workouts</h2></mat-card-title>
+    <mat-card-subtitle>
+      Current workouts
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let workout of workouts">
+      <div class="mb-20">
+        <p class="workout-title">{{workout.title}}</p>
+        <a routerLink="/workout-details/{{workout.id}}">
+          <span class="badge">{{workout.workoutname}}</span>
+        </a>
+        <p class="workout-description">
+          {{workout.description}}
+        </p>
+      </div>
+    </div>
+  </mat-card-content>
+    <mat-card-actions>
+      <div class="button-row">
+        <form>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="onLogClick()">
+            Log
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="onEditClick()">
+            Edit
+          </button>
+        </form>
+      </div>
+    </mat-card-actions>
+</mat-card>
