@@ -1,42 +1,60 @@
-<div class="content" fxLayout="row" fxLayoutAlign="center" *ngIf="user">
-  <mat-card-header>
-    <mat-card-title>
-      <h2> {{user.username | uppercase}} Details</h2>
-    </mat-card-title>
-  </mat-card-header>
-  <div>
-    <mat-card-content>
-      <label>id:
-        <input matInput placeholder="user id" [(ngModel)]="user.id" placeholder="id">
-      </label>
-
-      <label>name:
-        <input matInput placeholder="user name" [(ngModel)]="user.username" placeholder="name">
-      </label>
-
-      <label>password:
-        <input matInput placeholder="user password" [(ngModel)]="user.password" placeholder="password">
-      </label>
-
-      <label>firstname:
-        <input matInput placeholder="user firstname" [(ngModel)]="user.firstname" placeholder="firstname">
-      </label>
-
-      <label>lastname:
-        <input matInput placeholder="user lastname" [(ngModel)]="user.lastname" placeholder="lastname">
-      </label>
-
-      <label>enabled:
-        <input matInput placeholder="user enabled" [(ngModel)]="user.enabled" placeholder="enabled">
-      </label>
-
-      <label>email:
-        <input matInput placeholder="user email" [(ngModel)]="user.email" placeholder="email">
-      </label>
-    </mat-card-content>
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px" fxLayoutAlign="center" *ngIf="user">
+  <div fxFlex>
+    <mat-card>
+      <form [formGroup]="userForm" novalidate (ngSubmit)="save()" onkeypress="if(event.keyCode == 13) return false;">
+      <mat-card-header>
+        <mat-card-title>
+          <h2> {{user.username | uppercase}} Details</h2>
+        </mat-card-title>
+      </mat-card-header>
+      <div>
+        <mat-card-content>
+          <div class="mb-20">
+            <mat-form-field>
+              <input matInput placeholder="user name" formControlName="username" required/>
+            </mat-form-field>
+          </div>
+          <div class="mb-20">
+            <mat-form-field>
+              <input matInput placeholder="user password" formControlName="password" required/>
+            </mat-form-field>
+          </div>
+          <div class="mb-20">
+            <mat-form-field>
+              <input matInput placeholder="user firstname" formControlName="firstname" required/>
+            </mat-form-field>
+          </div>
+          <div class="mb-20">
+            <mat-form-field>
+              <input matInput placeholder="user lastname" formControlName="lastname" required/>
+            </mat-form-field>
+          </div>
+          <div class="mb-20">
+            <mat-form-field>
+              <input matInput placeholder="user enabled" formControlName="enabled" required/>
+            </mat-form-field>
+          </div>
+          <div class="mb-20">
+            <mat-form-field>
+              <input matInput placeholder="user email" formControlName="email" required/>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </div>
+      <div class="elements-row">
+        <button mat-stroked-button color="primary" (click)="goBack()">
+          <span>go back</span>
+        </button>
+        <button mat-stroked-button color="primary" (click)="onSubscribe()" [disabled]="!friendShip" >
+          <span>subscribe</span>
+        </button>
+      </div>
+      </form>
+    </mat-card>
   </div>
-  <button mat-raised-button color="primary" (click)="goBack()">
-    <span>go back</span>
-  </button>
 </div>
 
+
+<!--<label>email:-->
+<!--<input matInput placeholder="user email" [(ngModel)]="user.email" placeholder="email">-->
+<!--</label>-->

@@ -5,6 +5,9 @@ export class Exercise {
   id: number;
   exerciseName: string;
   description: string;
-  exerciseType: ExerciseType[];
+  exerciseTypes: ExerciseType[];
+  repetitions: number;
+  weights: number;
+  sets: number
 
 }

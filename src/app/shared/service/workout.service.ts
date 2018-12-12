@@ -34,16 +34,18 @@ export class WorkoutService {
     );
   }
 
-  // устарела
-  save(workout) {
-    const workoutHeaders = new HttpHeaders({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    });
-    return this.apiService.post(this.config.workout_create_url, JSON.stringify(workout), workoutHeaders).map(() => {
-        console.log("workout is created");
-    }
-    )
+  getCurrentWorkout() {
+    return this.apiService.get(this.workoutUrl  + '/current').pipe(
+      tap(workout => this.log(`fetched current workout` + workout)),
+      catchError(this.handleError('getCurrentWorkout', []))
+    );
+  }
+
+  getCoaches() {
+    return this.apiService.get(this.workoutUrl  + '/coaches').pipe(
+      tap(coahces => this.log(`fetched coaches` + coahces)),
+      catchError(this.handleError('getCoaches', []))
+    );
   }
 
   update(workout: Workout) {
@@ -60,7 +62,7 @@ export class WorkoutService {
       'Content-Type': 'application/json'
     });
 
-    return this.apiService.post(this.workoutUrl + 'create', workout, workoutHeaders).pipe(
+    return this.apiService.post(this.workoutUrl + '/create', workout, workoutHeaders).pipe(
       tap(_ => this.log(`added workout /w id=${workout.id}`)),
       catchError(this.handleError<Workout>('addWrokout'))
     )
@@ -87,4 +89,17 @@ export class WorkoutService {
       return of(result as T);
     }
   }
+
+  // устарела
+  save(workout) {
+    const workoutHeaders = new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    });
+    return this.apiService.post(this.config.workout_create_url, JSON.stringify(workout), workoutHeaders).map(() => {
+        console.log("workout is created");
+      }
+    )
+  }
+
 }

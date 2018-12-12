@@ -1,4 +1,32 @@
-/*!* UserDetailComponent's private CSS styles *!*/
+button {
+  margin: 16px 8px;
+}
+
+.button-row {
+  text-align: left;
+}
+
+.button-row button {
+  margin-right: 8px;
+}
+
+.button-row form {
+  margin-right: 8px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+a {
+  color: #0089cd;
+}
+
+.elements-row {
+  margin-right: 8px;
+}
+
+
 /*label {*/
   /*display: inline-block;*/
   /*width: 3em;*/

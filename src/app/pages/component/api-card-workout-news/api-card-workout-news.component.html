@@ -14,15 +14,21 @@
               <div *ngFor="let workout of workouts">
                 <mat-card class="mb-20">
                   <mat-card-header>
-                    <mat-card-title><h2>{{workout.user.username}}</h2></mat-card-title>
-                    <mat-card-subtitle>Box/Trainer's name</mat-card-subtitle>
+                    <mat-card-title>
+                      <h2><img alt="userpic" class="app-angular-logo" src="assets/image/angular-white-transparent.svg">
+                      <a routerLink="/user-details/{{workout.user.id}}">
+                        <span class="badge">{{workout.user.username}}</span>
+                      </a>
+                      </h2>
+                    </mat-card-title>
+                    <mat-card-subtitle>{{workout.dateTime}}</mat-card-subtitle>
                   </mat-card-header>
                   <a routerLink="/workout-details/{{workout.id}}">
-                    <span class="badge">{{workout.id}}</span> {{workout.workoutname}}
+                    <span class="badge"> {{workout.workoutName}}</span>
                   </a>
                   <div *ngFor="let exercise of workout.exercises">
                     <div routerLink="/workout-details/{{exercise.id}}">
-                      <span class="badge">{{exercise.id}}</span> {{exercise.exercisename}}
+                      <span class="badge">{{exercise.repetitions}} {{exercise.exerciseName}}|{{exercise.weights}}</span>
                     </div>
                   </div>
                 </mat-card>

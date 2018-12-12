@@ -1,41 +1,52 @@
-<div class="exercise-dynamic-add">
-  <h4>Add new exercises:</h4>
-  <div>
-    <mat-form-field>
-      <input matInput placeholder="enter new exercise" #exerciseName/>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="enter exercise type" #exerciseType/>
-    </mat-form-field>
-    <button mat-raised-button
-            (click)="add(exerciseName.value, exerciseType.value); exerciseName.value=''; exerciseType.value=''">
-      Add
-    </button>
+<mat-card class="mb-20">
+  <div class="exercise-dynamic-add">
+    <h4>Add new exercises:</h4>
+    <div>
+      <p [class]="notification.msgType" *ngIf="notification">{{notification.msgBody}}</p>
+      <mat-form-field>
+        <input matInput placeholder="enter new exercise" #exerciseName/>
+      </mat-form-field>
+      <!--<mat-form-field>-->
+        <!--<input matInput placeholder="enter exercise type" #exerciseType/>-->
+      <!--</mat-form-field>-->
+      <mat-form-field>
+        <mat-select placeholder="Choose exercise type" [(value)] = "selectedTypeValue">
+          <mat-option *ngFor="let type of exerciseTypes" [value]="type">
+            {{type.exerciseType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-stroked-button
+              (click)="add(exerciseName.value, selectedTypeValue); exerciseName.value='';">
+        Add
+      </button>
+    </div>
   </div>
+</mat-card>
 
-</div>
+<mat-card class="mb-20">
+  <h3>All exercises</h3>
+  <div class="button-row">
+    <form>
+      <button mat-stroked-button *ngIf="!isDescription" routerLink="/exercise-add">
+        Add
+      </button>
+    </form>
+  </div>
+  <div>
+    <div class="mb-20" fxLayout="row" fxLayoutAlign="center" *ngIf="exercises">
+      <div fxFlex>
 
-<h3>All exercises</h3>
-<div class="button-row">
-  <form>
-    <button mat-raised-button *ngIf="!isDescription" color="primary" routerLink="/exercise-add">
-      Add
-    </button>
-  </form>
-</div>
-<div>
-  <div class="mb-20" fxLayout="row" fxLayoutAlign="center" *ngIf="exercises">
-    <div fxFlex>
-
-      <div *ngFor="let exercise of exercises">
-        <mat-card class="mb-20">
-          <a routerLink="/exercise-details/{{exercise.id}}">
-            <span class="badge">{{exercise.id}}</span> {{exercise.exerciseName}}
-          </a>
-          <!--<button class="delete" title="delete hero"-->
-          <!--(click)="delete(hero)">X</button>-->
-        </mat-card>
+        <div *ngFor="let exercise of exercises">
+          <mat-card class="mb-20">
+            <a routerLink="/exercise-details/{{exercise.id}}">
+              <span class="badge">{{exercise.exerciseName}}</span>
+            </a>
+            <!--<button class="delete" title="delete hero"-->
+            <!--(click)="delete(hero)">X</button>-->
+          </mat-card>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</mat-card>

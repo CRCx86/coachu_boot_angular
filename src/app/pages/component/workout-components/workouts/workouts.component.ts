@@ -3,11 +3,11 @@ import {Workout} from '../../../../shared/models/workout';
 import {UserService, WorkoutService} from '../../../../shared/service';
 import {Exercise} from '../../../../shared/models/exercise';
 
-const EXERCISES_DATA: Exercise[] = [
-  {id: 1, exerciseName: 'deadlift', exerciseType: ['POWERLIFTING'], description: 'deadlift'},
-  {id: 2, exerciseName: 'muscle-up', exerciseType: ['GYMNASTIC'], description: 'muscle-up'},
-  {id: 3, exerciseName: 'row', exerciseType: ['MONOSTRUCTURIAL'], description: 'row'}
-];
+// const EXERCISES_DATA: Exercise[] = [
+//   {id: 1, exerciseName: 'deadlift', exerciseType: ['POWERLIFTING'], description: 'deadlift'},
+//   {id: 2, exerciseName: 'muscle-up', exerciseType: ['GYMNASTIC'], description: 'muscle-up'},
+//   {id: 3, exerciseName: 'row', exerciseType: ['MONOSTRUCTURIAL'], description: 'row'}
+// ];
 
 @Component({
   selector: 'app-workouts',
@@ -61,7 +61,7 @@ export class WorkoutsComponent implements OnInit {
   getAll() {
     this.workoutService.getWorkouts()
       .subscribe(workouts => this.workouts = workouts);
-    this.initDescription();
+    // this.initDescription();
   }
 
 }

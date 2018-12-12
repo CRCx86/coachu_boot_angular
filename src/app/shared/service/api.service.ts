@@ -38,30 +38,25 @@ export class ApiService {
     }
 
     return this.http.get(path, options).pipe(
-      tap(_ => this.log('fetched service')),
-      catchError(this.handleError<any>('fetched service', [])
-      )
+      tap(_ => this.log('fetched service'))
     );
   }
 
   post(path: string, body: any, customHeaders?: HttpHeaders): Observable<any> {
     return this.request(path, body, RequestMethod.Post, customHeaders).pipe(
-      tap(_ => this.log(`post service`)),
-      catchError(this.handleError<any>('post service'))
+      tap(_ => this.log(`post service`))
     );
   }
 
   put(path: string, body: any): Observable<any> {
     return this.request(path, body, RequestMethod.Put).pipe(
-      tap(_ => this.log(`put service`)),
-      catchError(this.handleError<any>('put service'))
+      tap(_ => this.log(`put service`))
     );
   }
 
   delete(path: string, body?: any): Observable<any> {
     return this.request(path, body, RequestMethod.Delete).pipe(
-      tap(_ => this.log(`deleted service`)),
-      catchError(this.handleError<any>('delete service'))
+      tap(_ => this.log(`deleted service`))
     );
   }
 
@@ -74,7 +69,8 @@ export class ApiService {
     return this.http.request(req).pipe(
       filter(response => response instanceof HttpResponse),
       map((response: HttpResponse<any>) => response.body),
-      catchError(this.handleError<any>('request service error', []))
+      // catchError(this.handleError<any>('request service error', []))
+      catchError(err => this.checkError(err))
     );
   }
 
@@ -102,7 +98,7 @@ export class ApiService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a message with the MessageService */
   private log(message: string) {
     // this.messageService.add(`HeroService: ${message}`);
   }

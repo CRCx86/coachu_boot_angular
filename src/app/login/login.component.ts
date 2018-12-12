@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Subject} from "rxjs";
+import {Subject} from 'rxjs';
 import {DisplayMessage} from '../shared/models/display-message';
 import {AuthService, UserService} from '../shared/service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,6 @@ export class LoginComponent implements OnInit {
   submitted = false;
 
   notification: DisplayMessage;
-
   returnUrl: string;
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
               private authService: AuthService,
               private router: Router,
               private route: ActivatedRoute,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
     this.route.params
@@ -74,12 +75,11 @@ export class LoginComponent implements OnInit {
     // show me the animation
       .delay(1000)
       .subscribe(data => {
-          this.userService.getMyInfo().subscribe();
           this.router.navigate([this.returnUrl]);
         },
         error => {
           this.submitted = false;
-          this.notification = { msgType: 'error', msgBody: 'Incorrect username or password.' };
+          this.notification = {msgType: 'error', msgBody: 'Incorrect username or password.'};
         });
 
   }

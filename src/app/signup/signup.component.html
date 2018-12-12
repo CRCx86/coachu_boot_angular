@@ -35,7 +35,7 @@
           <label>Last Name: </label>
           <input matInput formControlName="lastname">
         </mat-form-field>
-        <button type="submit" [disabled]="!signupForm.form.valid" mat-raised-button color="primary">Sign up</button>
+        <button type="submit" [disabled]="!signupForm.form.valid" mat-stroked-button>Sign up</button>
       </form>
       <br>
 
@@ -51,7 +51,7 @@
       <p>
         <i>Click below to go to repository</i>
       </p>
-      <button (click)="repository()" mat-raised-button color="primary">GitHub Repository</button>
+      <button (click)="repository()" mat-stroked-button>GitHub Repository</button>
 
     </mat-card-content>
 

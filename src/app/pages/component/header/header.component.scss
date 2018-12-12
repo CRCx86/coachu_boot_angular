@@ -1,7 +1,6 @@
 :host {
   //position: relative;
   //z-index: 10;
-  //color: #fff;
   display: block;
   position: fixed;
   left: 0;
@@ -19,6 +18,8 @@
   color: #fff;
 }
 
+
+
 .app-navbar {
   width: 100%;
   display: flex;
@@ -27,7 +28,14 @@
   .right {
     margin-left: auto;
     float: right;
+
+    .header-button {
+      color: black;
+    }
   }
+
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.24);
 }
 
 .app-navbar span {

@@ -5,12 +5,12 @@ import {DashboardRoutingModule} from './dashboard-routing.module';
 import {DashboardComponent} from './dashboard.component';
 import {
   MatAutocompleteModule,
-  MatButtonModule,
-  MatCardModule, MatDialogModule, MatDividerModule,
+  MatButtonModule, MatButtonToggleModule,
+  MatCardModule, MatDatepickerModule, MatDialogModule, MatDividerModule,
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule, MatInputModule,
-  MatMenuModule, MatSelectModule, MatSlideToggleModule,
+  MatMenuModule, MatNativeDateModule, MatSelectModule, MatSlideToggleModule,
   MatTableModule, MatTabsModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -24,9 +24,9 @@ import {WorkoutsComponent} from '../component/workout-components/workouts/workou
 import {WorkoutDetailsComponent} from '../component/workout-components/workout-details/workout-details.component';
 import {WorkoutDialogExerciseAddComponent} from '../component/workout-components/workout-dialog-exercise-add/workout-dialog-exercise-add.component';
 import {WorkoutStyleDashboardComponent} from '../component/workout-components/workout-style-dashboard/workout-style-dashboard.component';
-import {WorkoutMovementsStyleDashboardComponent} from '../component/workout-components/workout-movements-style-dashboard/workout-movements-style-dashboard.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserDetailsComponent} from '../component/user-details/user-details.component';
+import {AdminComponent} from '../admin';
 
 @NgModule({
   imports: [
@@ -49,11 +49,13 @@ import {UserDetailsComponent} from '../component/user-details/user-details.compo
     MatDividerModule,
     MatAutocompleteModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonToggleModule
   ],
   declarations: [DashboardComponent, ApiCardComponent, ApiCardUserStatesComponent, ApiCardWorkoutNewsComponent, ApiCardCurrentWorkoutComponent,
-    ExercisesComponent, ExerciseDetailsComponent, WorkoutsComponent, WorkoutDetailsComponent, WorkoutDialogExerciseAddComponent, WorkoutStyleDashboardComponent,
-    WorkoutMovementsStyleDashboardComponent, UserDetailsComponent]
+    ExercisesComponent, ExerciseDetailsComponent, WorkoutsComponent, WorkoutDetailsComponent, WorkoutDialogExerciseAddComponent, WorkoutStyleDashboardComponent, UserDetailsComponent]
 })
 export class DashboardModule {
 }

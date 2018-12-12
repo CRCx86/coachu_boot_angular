@@ -1,29 +1,33 @@
-<div class="button-row">
-  <form>
-    <button mat-raised-button *ngIf="!isDescription" color="primary" routerLink="/workout-style-dashboard">
-      Add
-    </button>
-  </form>
-</div>
-<div>
-  <div class="mb-20" fxLayout="row" fxLayoutAlign="center" *ngIf="workouts">
-    <div fxFlex>
-      <h2>Workout's feed</h2>
-      <div *ngFor="let workout of workouts">
-        <mat-card class="mb-20">
-          <a routerLink="/workout-details/{{workout.id}}">
-            <span class="badge">{{workout.id}}</span> {{workout.workoutname}}
-          </a>
-          <div *ngFor="let exercise of workout.exercises">
-            <div routerLink="/workout-details/{{exercise.id}}">
-              <span class="badge">{{exercise.id}}</span> {{exercise.exerciseName}}
+<mat-card class="mb-20">
+  <div class="button-row">
+    <form>
+      <button mat-stroked-button *ngIf="!isDescription" routerLink="/workout-style-dashboard">
+        Add
+      </button>
+    </form>
+  </div>
+</mat-card>
+<mat-card class="mb-20">
+  <div>
+    <div class="mb-20" fxLayout="row" fxLayoutAlign="center" *ngIf="workouts">
+      <div fxFlex>
+        <h2>workout's feed</h2>
+        <div *ngFor="let workout of workouts">
+          <mat-card class="mb-20">
+            <a routerLink="/workout-details/{{workout.id}}">
+              <span class="badge"> {{workout.workoutName}}</span>
+            </a>
+            <div *ngFor="let exercise of workout.exercises">
+              <a routerLink="/exercise-details/{{exercise.id}}">
+                <span class="badge">{{exercise.exerciseName}}</span>
+              </a>
             </div>
-          </div>
-          <!--<button class="delete" title="delete hero"-->
-          <!--(click)="delete(hero)">X</button>-->
-        </mat-card>
+            <!--<button class="delete" title="delete hero"-->
+            <!--(click)="delete(hero)">X</button>-->
+          </mat-card>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</mat-card>
 

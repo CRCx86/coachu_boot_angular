@@ -1,12 +1,13 @@
-<mat-toolbar color="primary" class="app-navbar">
+<mat-toolbar class="app-navbar">
 
   <button type="button" mat-icon-button class="visible-md" (click)="toggleSidebar()">
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
 
-  <button mat-button mat-ripple routerLink="/">
+  <!--<button mat-button mat-ripple routerLink="/">-->
+  <button mat-stroked-button routerLink="/">
     <img alt="CoachU" class="app-angular-logo" src="assets/image/angular-white-transparent.svg">
-    <span>CoachU</span>
+    <span class="header-button">CoachU</span>
   </button>
 
   <form class="hidden-sm" *ngIf="hasSignedIn()" style="margin-left: 20px; margin-top: 5px">
@@ -17,18 +18,19 @@
 
   <div class="right">
     <div fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="flex-end center">
-      <button *ngIf="!hasSignedIn()" routerLink="/signup" mat-button mat-ripple>
-        <span>Sign up</span>
+      <!--<button *ngIf="!hasSignedIn()" routerLink="/signup" mat-button mat-ripple>-->
+      <button *ngIf="!hasSignedIn()" routerLink="/signup" mat-stroked-button>
+        <span class="header-button">Sign up</span>
       </button>
-      <button *ngIf="!hasSignedIn()" routerLink="/login" mat-button mat-ripple>
-        <span>Login</span>
+      <button *ngIf="!hasSignedIn()" routerLink="/login" mat-stroked-button>
+        <span class="header-button">Login</span>
       </button>
       <button
         class="greeting-button"
         *ngIf="hasSignedIn()"
-        mat-button mat-fab color="primary"
+        mat-stroked-button
         [matMenuTriggerFor]="accountMenu">
-       <span>{{userName()}}</span>
+       <span class="header-button">{{userName()}}</span>
       </button>
 
       <button class="hidden-sm" *ngIf="hasSignedIn()" mat-icon-button [matMenuTriggerFor]="language">
@@ -52,7 +54,7 @@
       <button
         class="greeting-hamburger"
         *ngIf="hasSignedIn()"
-        mat-icon-button mat-ripple
+        mat-icon-button mat-stroked-button
         [matMenuTriggerFor]="accountMenu">
         <mat-icon>menu</mat-icon>
       </button>
@@ -65,7 +67,7 @@
     </div>
   </div>
 
-  <button *ngIf="hasSignedIn()" mat-icon-button (click)="onLoggedout()">
+  <button *ngIf="hasSignedIn()" mat-icon-button (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>
   </button>
 </mat-toolbar>

@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import {DashboardComponent} from './dashboard.component';
 import {WorkoutDetailsComponent} from '../component/workout-components/workout-details/workout-details.component';
 import {WorkoutsComponent} from '../component/workout-components/workouts/workouts.component';
-import {WorkoutMovementsStyleDashboardComponent} from '../component/workout-components/workout-movements-style-dashboard/workout-movements-style-dashboard.component';
 import {WorkoutStyleDashboardComponent} from '../component/workout-components/workout-style-dashboard/workout-style-dashboard.component';
 import {ExerciseDetailsComponent} from '../component/exercise-components/exercise-details/exercise-details.component';
 import {ExercisesComponent} from '../component/exercise-components/exercises/exercises.component';
+import {ApiCardWorkoutNewsComponent} from '../component/api-card-workout-news/api-card-workout-news.component';
+import {UserDetailsComponent} from '../component/user-details/user-details.component';
+import {LoginGuard} from '../guard';
 
 const routes: Routes = [
   {
@@ -15,6 +17,12 @@ const routes: Routes = [
   },
   {
     path: 'workout-add',
+    component: WorkoutDetailsComponent
+    // ,
+    // canActivate: [AdminGuard]
+  },
+  {
+    path: 'workout-add/:type',
     component: WorkoutDetailsComponent
     // ,
     // canActivate: [AdminGuard]
@@ -30,12 +38,6 @@ const routes: Routes = [
     component: WorkoutsComponent
     // ,
     // canActivate: [AdminGuard]
-  },
-  {
-    path: 'workout-movements-style-dashboard',
-    component: WorkoutMovementsStyleDashboardComponent
-    // ,
-    // canActivate: [LoginGuard]
   },
   {
     path: 'workout-style-dashboard',
@@ -58,6 +60,24 @@ const routes: Routes = [
   {
     path: 'exercises',
     component: ExercisesComponent
+    // ,
+    // canActivate: [AdminGuard]
+  },
+  {
+    path: 'user-details/:id',
+    component: UserDetailsComponent
+    // ,
+    // canActivate: [LoginGuard]
+  },
+  {
+    path: 'user-details',
+    component: UserDetailsComponent
+    // ,
+    // canActivate: [LoginGuard]
+  },
+  {
+    path: 'news',
+    component: ApiCardWorkoutNewsComponent
     // ,
     // canActivate: [AdminGuard]
   }

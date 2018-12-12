@@ -3,24 +3,17 @@
   <div mat-dialog-content>
     <mat-form-field>
       Exercise
-      <input matInput [(ngModel)]="exercise.exercisename">
+      <input matInput [(ngModel)]="exercise.exerciseName">
     </mat-form-field>
     <mat-form-field>
       Exercise search component (experiment)
       <input #searchBox id="search-box" matInput (keyup)="search(searchBox.value)" [matAutocomplete]="auto">
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let exercise of exercise$ | async" [value]="exercise.exercisename">
-          {{exercise.exercisename}}
+        <mat-option *ngFor="let exercise of exercise$ | async" [value]="exercise.exerciseName">
+          {{exercise.exerciseName}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <!--<ul class="search-result">-->
-      <!--<li *ngFor="let exersice of exercise$ | async">-->
-        <!--<a routerLink="/exercise-detial/{{exersice.id}}">-->
-          <!--{{exersice.exercisename}}-->
-        <!--</a>-->
-      <!--</li>-->
-    <!--</ul>-->
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="onCancel()">Cancel</button>

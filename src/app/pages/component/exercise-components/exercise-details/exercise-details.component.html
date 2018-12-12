@@ -1,45 +1,11 @@
-<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px" *ngIf="exercise.id">
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
   <div fxFlex>
     <mat-card>
-      <form [formGroup]="exerciseForm" (ngSubmit)="save()">
+      <p [class]="notification.msgType" *ngIf="notification">{{notification.msgBody}}</p>
+      <form *ngIf="exercise" [formGroup]="exerciseForm" novalidate (ngSubmit)="save()" onkeypress="if(event.keyCode == 13) return false;">
         <mat-card-header>
           <mat-card-title>
-            <h2>Edit exercise's details</h2>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <div class="mb-20">
-            <mat-form-field>
-              <input matInput placeholder="Exercise name" [(ngModel)]="exercise.exercisename"
-                     formControlName="exerciseName" required/>
-            </mat-form-field>
-          </div>
-          <div class="mb-20">
-            <mat-form-field>
-              <input matInput placeholder="Exercise type" [(ngModel)]="exercise.exerciseType"
-                     formControlName="exerciseType" required/>
-            </mat-form-field>
-          </div>
-        </mat-card-content>
-        <button mat-raised-button color="primary" type="submit"
-                [disabled]="!exerciseForm.valid">Save
-        </button>
-        <button mat-raised-button color="secondary" (click)="remove(exercise.id)"
-                *ngIf="exercise.id" type="button">Delete
-        </button>
-        <a mat-button routerLink="/exercises">Go Back </a>
-      </form>
-    </mat-card>
-  </div>
-</div>
-
-<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px" *ngIf="!exercise.id">
-  <div fxFlex>
-    <mat-card>
-      <form [formGroup]="exerciseForm" (ngSubmit)="save()">
-        <mat-card-header>
-          <mat-card-title>
-            <h2>Add exercise</h2>
+            <h2>{{exercise.exerciseName ? 'Edit exercise': 'Add exercise'}}</h2>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -49,17 +15,22 @@
             </mat-form-field>
           </div>
           <div class="mb-20">
+            <!--<mat-form-field>-->
+              <!--<input matInput placeholder="Exercise type" formControlName="exerciseType" required/>-->
+            <!--</mat-form-field>-->
             <mat-form-field>
-              <input matInput placeholder="Exercise type" formControlName="exerciseType" required/>
+              <mat-select placeholder="Exercise type" formControlName="exerciseType" required>
+                <mat-option *ngFor="let type of exerciseTypes" [value]="type.exercise_type_id">
+                  {{type.exerciseType}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
         </mat-card-content>
-        <button mat-raised-button color="primary" type="submit"
-                [disabled]="!exerciseForm.valid">Save
+        <button mat-stroked-button color="primary" type="submit" [disabled]="!exerciseForm.valid">Save
         </button>
-        <!--<button mat-raised-button color="secondary" (click)="remove(exercise.id)"-->
-                <!--*ngIf="exercise.id" type="button">Delete-->
-        <!--</button>-->
+        <button mat-stroked-button color="secondary" (click)="remove(exercise.id)" *ngIf="exercise.id" type="button">Delete
+        </button>
         <a mat-button routerLink="/exercises">Go Back </a>
       </form>
     </mat-card>

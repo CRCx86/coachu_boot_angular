@@ -38,11 +38,9 @@ export class HeaderComponent implements OnInit {
 
   userName() {
     const user = this.userService.currentUser;
-    let firstname = user.firstname;
-    let lastname = user.lastname;
 
-    if (firstname != undefined && lastname != undefined) {
-      return firstname.charAt(0).toUpperCase() + ' ' + lastname.charAt(0).toUpperCase();
+    if (user.firstname) {
+      return user.firstname.toUpperCase();
     }
     return 'UU';
   }
@@ -61,7 +59,4 @@ export class HeaderComponent implements OnInit {
     this.translateService.use(language);
   }
 
-  onLoggedout() {
-
-  }
 }
